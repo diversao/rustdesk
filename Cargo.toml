@@ -1,10 +1,10 @@
 [package]
-name = "rustdesk"
+name = "OAB Remote Desk"
 version = "1.2.3"
-authors = ["rustdesk <info@rustdesk.com>"]
-edition = "2021"
+authors = ["Gabryel <gabryel.goncalves@oabgo.org.br>"]
+edition = "2023"
 build= "build.rs"
-description = "A remote control software."
+description = "Seu acesso remoto da OAB Goiás"
 default-run = "rustdesk"
 
 [lib]
@@ -157,7 +157,7 @@ os-version = "0.2"
 hound = "3.5"
 
 [package.metadata.bundle]
-name = "RustDesk"
+name = "OAB Remote Desk"
 identifier = "com.carriez.rustdesk"
 icon = ["res/32x32.png", "res/128x128.png", "res/128x128@2x.png"]
 osx_minimum_system_version = "10.14"
