@@ -1,10 +1,10 @@
 [package]
 name = "rustdesk"
 version = "1.2.3"
-authors = ["rustdesk <info@rustdesk.com>"]
+authors = ["Gabryel <gabryel.goncalves@oabgo.org.br>"]
 edition = "2021"
 build= "build.rs"
-description = "A remote control software."
+description = "Seu acesso remoto da OAB Goiás"
 default-run = "rustdesk"
 
 [lib]
