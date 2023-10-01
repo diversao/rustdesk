@@ -1,10 +1,10 @@
 [package]
-name = "OABRemoteDesk"
+name = "rustdesk"
 version = "1.2.3"
-authors = ["Gabryel <gabryel.goncalves@oabgo.org.br>"]
-edition = "2023"
+authors = ["rustdesk <info@rustdesk.com>"]
+edition = "2021"
 build= "build.rs"
-description = "Seu acesso remoto da OAB Goiás"
+description = "A remote control software."
 default-run = "rustdesk"
 
 [lib]
@@ -18,7 +18,7 @@ path = "src/naming.rs"
 [features]
 inline = []
 cli = []
-flutter_texture_render = [] 
+flutter_texture_render = []
 appimage = []
 flatpak = []
 use_samplerate = ["samplerate"]
@@ -157,7 +157,7 @@ os-version = "0.2"
 hound = "3.5"
 
 [package.metadata.bundle]
-name = "OABRemoteDesk"
+name = "RustDesk"
 identifier = "com.carriez.rustdesk"
 icon = ["res/32x32.png", "res/128x128.png", "res/128x128@2x.png"]
 osx_minimum_system_version = "10.14"
