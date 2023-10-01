@@ -21,13 +21,13 @@ import texture_rgba_renderer
 
 class MainFlutterWindow: NSWindow {
     override func awakeFromNib() {
-        OABRemoteDesk_core_main();
+        rustdesk_core_main();
         let flutterViewController = FlutterViewController.init()
         let windowFrame = self.frame
         self.contentViewController = flutterViewController
         self.setFrame(windowFrame, display: true)
         // register self method handler
-        let registrar = flutterViewController.registrar(forPlugin: "OABRemoteDeskPlugin")
+        let registrar = flutterViewController.registrar(forPlugin: "RustDeskPlugin")
         setMethodHandler(registrar: registrar)
         
         RegisterGeneratedPlugins(registry: flutterViewController)
@@ -35,7 +35,7 @@ class MainFlutterWindow: NSWindow {
         FlutterMultiWindowPlugin.setOnWindowCreatedCallback { controller in
             // Register the plugin which you want access from other isolate.
             // DesktopLifecyclePlugin.register(with: controller.registrar(forPlugin: "DesktopLifecyclePlugin"))
-            self.setMethodHandler(registrar: controller.registrar(forPlugin: "OABRemoteDeskPlugin"))
+            self.setMethodHandler(registrar: controller.registrar(forPlugin: "RustDeskPlugin"))
             DesktopDropPlugin.register(with: controller.registrar(forPlugin: "DesktopDropPlugin"))
             DeviceInfoPlusMacosPlugin.register(with: controller.registrar(forPlugin: "DeviceInfoPlusMacosPlugin"))
             FlutterCustomCursorPlugin.register(with: controller.registrar(forPlugin: "FlutterCustomCursorPlugin"))
@@ -64,7 +64,7 @@ class MainFlutterWindow: NSWindow {
     }
     
     public func setMethodHandler(registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "org.OABRemoteDesk.OABRemoteDesk/macos", binaryMessenger: registrar.messenger)
+        let channel = FlutterMethodChannel(name: "org.rustdesk.rustdesk/macos", binaryMessenger: registrar.messenger)
         channel.setMethodCallHandler({
             (call, result) -> Void in
                 switch call.method {

@@ -327,7 +327,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           "Status",
           "There is a newer version of ${bind.mainGetAppNameSync()} ${bind.mainGetNewVersion()} available.",
           "Click to download", () async {
-        final Uri url = Uri.parse('https://OABRemoteDesk.com/download');
+        final Uri url = Uri.parse('https://rustdesk.com/download');
         await launchUrl(url);
       },
       closeButton: true);
@@ -383,12 +383,12 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         return buildInstallCard(
             "Warning", "wayland_experiment_tip", "", () async {},
             help: 'Help',
-            link: 'https://OABRemoteDesk.com/docs/en/manual/linux/#x11-required');
+            link: 'https://rustdesk.com/docs/en/manual/linux/#x11-required');
       } else if (bind.mainIsLoginWayland()) {
         return buildInstallCard("Warning",
             "Login screen using Wayland is not supported", "", () async {},
             help: 'Help',
-            link: 'https://OABRemoteDesk.com/docs/en/manual/linux/#login-screen');
+            link: 'https://rustdesk.com/docs/en/manual/linux/#login-screen');
       }
     }
     return Container();
@@ -532,7 +532,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           watchIsInputMonitoring = false;
           // Do not notify for now.
           // Monitoring may not take effect until the process is restarted.
-          // OABRemoteDeskWinManager.call(
+          // rustDeskWinManager.call(
           //     WindowType.RemoteDesktop, kWindowDisableGrabKeyboard, '');
           setState(() {});
         }
@@ -553,9 +553,9 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       }
     });
     Get.put<RxBool>(svcStopped, tag: 'stop-service');
-    OABRemoteDeskWinManager.registerActiveWindowListener(onActiveWindowChanged);
+    rustDeskWinManager.registerActiveWindowListener(onActiveWindowChanged);
 
-    OABRemoteDeskWinManager.setMethodHandler((call, fromWindowId) async {
+    rustDeskWinManager.setMethodHandler((call, fromWindowId) async {
       debugPrint(
           "[Main] call ${call.method} with args ${call.arguments} from window $fromWindowId");
       if (call.method == kWindowMainWindowOnTop) {
@@ -584,9 +584,9 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       } else if (call.method == kWindowActionRebuild) {
         reloadCurrentWindow();
       } else if (call.method == kWindowEventShow) {
-        await OABRemoteDeskWinManager.registerActiveWindow(call.arguments["id"]);
+        await rustDeskWinManager.registerActiveWindow(call.arguments["id"]);
       } else if (call.method == kWindowEventHide) {
-        await OABRemoteDeskWinManager.unregisterActiveWindow(call.arguments['id']);
+        await rustDeskWinManager.unregisterActiveWindow(call.arguments['id']);
       } else if (call.method == kWindowConnect) {
         await connectMainDesktop(
           call.arguments['id'],
@@ -604,7 +604,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           debugPrint("Failed to parse window id '${call.arguments}': $e");
         }
         if (windowId != null) {
-          await OABRemoteDeskWinManager.moveTabToNewWindow(windowId, args[1], args[2]);
+          await rustDeskWinManager.moveTabToNewWindow(windowId, args[1], args[2]);
         }
       }
     });

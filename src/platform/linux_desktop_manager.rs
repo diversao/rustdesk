@@ -680,9 +680,9 @@ impl DesktopManager {
                 "+extension",
                 "RENDER",
                 //"-logfile",
-                //"/tmp/OABRemoteDesk_xorg.log",
+                //"/tmp/RustDesk_xorg.log",
                 "-config",
-                "/etc/OABRemoteDesk/xorg.conf",
+                "/etc/rustdesk/xorg.conf",
                 "-auth",
                 xauth,
                 display,
@@ -701,7 +701,7 @@ impl DesktopManager {
         gid: u32,
         envs: &HashMap<&str, String>,
     ) -> ResultType<Child> {
-        match Command::new("/etc/OABRemoteDesk/startwm.sh")
+        match Command::new("/etc/rustdesk/startwm.sh")
             .envs(envs)
             .uid(uid)
             .gid(gid)
@@ -729,8 +729,8 @@ impl DesktopManager {
 }
 
 fn pam_get_service_name() -> &'static str {
-    if Path::new("/etc/pam.d/OABRemoteDesk").is_file() {
-        "OABRemoteDesk"
+    if Path::new("/etc/pam.d/rustdesk").is_file() {
+        "rustdesk"
     } else {
         "gdm"
     }

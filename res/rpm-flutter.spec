@@ -1,4 +1,4 @@
-Name:       OABRemoteDesk
+Name:       rustdesk
 Version:    1.2.3
 Release:    0
 Summary:    RPM package
@@ -19,21 +19,21 @@ The best open-source remote desktop client software, written in Rust.
 
 %install
 
-mkdir -p "%{buildroot}/usr/lib/OABRemoteDesk" && cp -r ${HBB}/flutter/build/linux/x64/release/bundle/* -t "%{buildroot}/usr/lib/OABRemoteDesk"
+mkdir -p "%{buildroot}/usr/lib/rustdesk" && cp -r ${HBB}/flutter/build/linux/x64/release/bundle/* -t "%{buildroot}/usr/lib/rustdesk"
 mkdir -p "%{buildroot}/usr/bin"
-install -Dm 644 $HBB/res/OABRemoteDesk.service -t "%{buildroot}/usr/share/OABRemoteDesk/files"
-install -Dm 644 $HBB/res/OABRemoteDesk.desktop -t "%{buildroot}/usr/share/OABRemoteDesk/files"
-install -Dm 644 $HBB/res/OABRemoteDesk-link.desktop -t "%{buildroot}/usr/share/OABRemoteDesk/files"
-install -Dm 644 $HBB/res/128x128@2x.png "%{buildroot}/usr/share/icons/hicolor/256x256/apps/OABRemoteDesk.png"
-install -Dm 644 $HBB/res/scalable.svg "%{buildroot}/usr/share/icons/hicolor/scalable/apps/OABRemoteDesk.svg"
+install -Dm 644 $HBB/res/rustdesk.service -t "%{buildroot}/usr/share/rustdesk/files"
+install -Dm 644 $HBB/res/rustdesk.desktop -t "%{buildroot}/usr/share/rustdesk/files"
+install -Dm 644 $HBB/res/rustdesk-link.desktop -t "%{buildroot}/usr/share/rustdesk/files"
+install -Dm 644 $HBB/res/128x128@2x.png "%{buildroot}/usr/share/icons/hicolor/256x256/apps/rustdesk.png"
+install -Dm 644 $HBB/res/scalable.svg "%{buildroot}/usr/share/icons/hicolor/scalable/apps/rustdesk.svg"
 
 %files
-/usr/lib/OABRemoteDesk/*
-/usr/share/OABRemoteDesk/files/OABRemoteDesk.service
-/usr/share/icons/hicolor/256x256/apps/OABRemoteDesk.png
-/usr/share/icons/hicolor/scalable/apps/OABRemoteDesk.svg
-/usr/share/OABRemoteDesk/files/OABRemoteDesk.desktop
-/usr/share/OABRemoteDesk/files/OABRemoteDesk-link.desktop
+/usr/lib/rustdesk/*
+/usr/share/rustdesk/files/rustdesk.service
+/usr/share/icons/hicolor/256x256/apps/rustdesk.png
+/usr/share/icons/hicolor/scalable/apps/rustdesk.svg
+/usr/share/rustdesk/files/rustdesk.desktop
+/usr/share/rustdesk/files/rustdesk-link.desktop
 
 %changelog
 # let's skip this for now
@@ -47,27 +47,27 @@ case "$1" in
   ;;
   2)
     # for upgrade
-    systemctl stop OABRemoteDesk || true
+    systemctl stop rustdesk || true
   ;;
 esac
 
 %post
-cp /usr/share/OABRemoteDesk/files/OABRemoteDesk.service /etc/systemd/system/OABRemoteDesk.service
-cp /usr/share/OABRemoteDesk/files/OABRemoteDesk.desktop /usr/share/applications/
-cp /usr/share/OABRemoteDesk/files/OABRemoteDesk-link.desktop /usr/share/applications/
-ln -s /usr/lib/OABRemoteDesk/OABRemoteDesk /usr/bin/OABRemoteDesk
+cp /usr/share/rustdesk/files/rustdesk.service /etc/systemd/system/rustdesk.service
+cp /usr/share/rustdesk/files/rustdesk.desktop /usr/share/applications/
+cp /usr/share/rustdesk/files/rustdesk-link.desktop /usr/share/applications/
+ln -s /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
 systemctl daemon-reload
-systemctl enable OABRemoteDesk
-systemctl start OABRemoteDesk
+systemctl enable rustdesk
+systemctl start rustdesk
 update-desktop-database
 
 %preun
 case "$1" in
   0)
     # for uninstall
-    systemctl stop OABRemoteDesk || true
-    systemctl disable OABRemoteDesk || true
-    rm /etc/systemd/system/OABRemoteDesk.service || true
+    systemctl stop rustdesk || true
+    systemctl disable rustdesk || true
+    rm /etc/systemd/system/rustdesk.service || true
   ;;
   1)
     # for upgrade
@@ -78,9 +78,9 @@ esac
 case "$1" in
   0)
     # for uninstall
-    rm /usr/share/applications/OABRemoteDesk.desktop || true
-    rm /usr/share/applications/OABRemoteDesk-link.desktop || true
-    rm /usr/bin/OABRemoteDesk || true
+    rm /usr/share/applications/rustdesk.desktop || true
+    rm /usr/share/applications/rustdesk-link.desktop || true
+    rm /usr/bin/rustdesk || true
     update-desktop-database
   ;;
   1)

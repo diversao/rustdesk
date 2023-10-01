@@ -1,11 +1,11 @@
 [package]
-name = "qemu-OABRemoteDesk"
+name = "qemu-rustdesk"
 version = "0.1.0"
-authors = ["OABRemoteDesk <info@OABRemoteDesk.com>"]
+authors = ["rustdesk <info@rustdesk.com>"]
 edition = "2021"
 
 [dependencies]
-qemu-display = { git = "https://github.com/OABRemoteDesk/qemu-display" }
+qemu-display = { git = "https://github.com/rustdesk/qemu-display" }
 hbb_common = { path = "../../libs/hbb_common" }
 clap = { version = "4.1", features = ["derive"] }
 zbus = { version = "3.0" }

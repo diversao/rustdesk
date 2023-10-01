@@ -1,14 +1,14 @@
 [package]
-name = "OABRemoteDesk"
+name = "rustdesk"
 version = "1.2.3"
 authors = ["Gabryel <gabryel.goncalves@oabgo.org.br>"]
 edition = "2021"
 build= "build.rs"
 description = "Seu acesso remoto da OAB Goiás"
-default-run = "OABRemoteDesk"
+default-run = "rustdesk"
 
 [lib]
-name = "libOABRemoteDesk"
+name = "librustdesk"
 crate-type = ["cdylib", "staticlib", "rlib"]
 
 [[bin]]
@@ -49,7 +49,7 @@ sha2 = "0.10"
 repng = "0.2"
 parity-tokio-ipc = { git = "https://github.com/open-trade/parity-tokio-ipc" }
 runas = "=1.0" # https://github.com/mitsuhiko/rust-runas/issues/13
-magnum-opus = { git = "https://github.com/OABRemoteDesk/magnum-opus" }
+magnum-opus = { git = "https://github.com/rustdesk/magnum-opus" }
 dasp = { version = "0.11", features = ["signal", "interpolate-linear", "interpolate"], optional = true }
 rubato = { version = "0.12", optional = true }
 samplerate = { version = "0.2", optional = true }
@@ -68,7 +68,7 @@ rdev = { git = "https://github.com/fufesou/rdev" }
 url = { version = "2.3", features = ["serde"] }
 crossbeam-queue = "0.3"
 hex = "0.4"
-reqwest = { git = "https://github.com/OABRemoteDesk-org/reqwest", features = ["blocking", "json", "rustls-tls"], default-features=false }
+reqwest = { git = "https://github.com/rustdesk-org/reqwest", features = ["blocking", "json", "rustls-tls"], default-features=false }
 chrono = "0.4"
 cidr-utils = "0.5"
 libloading = "0.8"
@@ -111,12 +111,12 @@ fruitbasket = "0.10"
 objc_id = "0.1"
 
 [target.'cfg(any(target_os = "macos", target_os = "linux", target_os = "windows"))'.dependencies]
-tray-icon = { git = "https://github.com/OABRemoteDesk-org/tray-icon" }
-tao = { git = "https://github.com/OABRemoteDesk-org/tao", branch = "dev" }
+tray-icon = { git = "https://github.com/rustdesk-org/tray-icon" }
+tao = { git = "https://github.com/rustdesk-org/tao", branch = "dev" }
 image = "0.24"
 
 [target.'cfg(any(target_os = "macos", target_os = "linux"))'.dependencies]
-keepawake = { git = "https://github.com/OABRemoteDesk-org/keepawake-rs" }
+keepawake = { git = "https://github.com/rustdesk-org/keepawake-rs" }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 psimple = { package = "libpulse-simple-binding", version = "2.27" }
@@ -141,7 +141,7 @@ exclude = ["vdi/host", "examples/custom_plugin"]
 [package.metadata.winres]
 LegalCopyright = "Copyright © 2023 Purslane, Inc."
 # this FileDescription overrides package.description
-FileDescription = "OABRemoteDesk"
+FileDescription = "RustDesk"
 
 [target.'cfg(target_os="windows")'.build-dependencies]
 winres = "0.1"
@@ -157,8 +157,8 @@ os-version = "0.2"
 hound = "3.5"
 
 [package.metadata.bundle]
-name = "OABRemoteDesk"
-identifier = "com.carriez.OABRemoteDesk"
+name = "RustDesk"
+identifier = "com.carriez.rustdesk"
 icon = ["res/32x32.png", "res/128x128.png", "res/128x128@2x.png"]
 osx_minimum_system_version = "10.14"
 

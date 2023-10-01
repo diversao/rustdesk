@@ -295,7 +295,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("Overwrite", "Substituir"),
         ("This file exists, skip or overwrite this file?", "Este arquivo existe, pular ou substituir este arquivo?"),
         ("Quit", "Sair"),
-        ("doc_mac_permission", "https://OABRemoteDesk.com/docs/en/manual/mac/#enable-permissions"),
+        ("doc_mac_permission", "https://rustdesk.com/docs/en/manual/mac/#enable-permissions"),
         ("Help", "Ajuda"),
         ("Failed", "Falhou"),
         ("Succeeded", "Sucesso"),
@@ -481,7 +481,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("show_monitors_tip", "Mostrar monitores na barra de ferramentas"),
         ("View Mode", "Modo de Visualização"),
         ("login_linux_tip", "Você precisa fazer login na conta Linux remota para habilitar uma sessão de desktop X"),
-        ("verify_OABRemoteDesk_password_tip", "Verifique a senha do OABRemoteDesk"),
+        ("verify_rustdesk_password_tip", "Verifique a senha do OABRemoteDesk"),
         ("remember_account_tip", "Lembrar desta conta"),
         ("os_account_desk_tip", "Esta conta é usada para fazer login no Sistema Operacional remoto e habilitar a sessão da área de trabalho em headless"),
         ("OS Account", "Conta do Sistema Operacional"),
@@ -555,7 +555,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("auto_disconnect_option_tip", ""),
         ("Connection failed due to inactivity", ""),
         ("Check for software update on startup", ""),
-        ("upgrade_OABRemoteDesk_server_pro_to_{}_tip", ""),
+        ("upgrade_rustdesk_server_pro_to_{}_tip", ""),
         ("pull_group_failed_tip", ""),
     ].iter().cloned().collect();
 }

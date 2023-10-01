@@ -606,12 +606,12 @@ void windowOnTop(int? id) async {
     }
     await windowManager.show();
     await windowManager.focus();
-    await OABRemoteDeskWinManager.registerActiveWindow(kWindowMainId);
+    await rustDeskWinManager.registerActiveWindow(kWindowMainId);
   } else {
     WindowController.fromWindowId(id)
       ..focus()
       ..show();
-    OABRemoteDeskWinManager.call(WindowType.Main, kWindowEventShow, {"id": id});
+    rustDeskWinManager.call(WindowType.Main, kWindowEventShow, {"id": id});
   }
 }
 
@@ -961,7 +961,7 @@ void msgBox(SessionID sessionId, String type, String title, String text,
   bool hasOk = false;
   submit() {
     dialogManager.dismissAll();
-    // https://github.com/fufesou/OABRemoteDesk/blob/5e9a31340b899822090a3731769ae79c6bf5f3e5/src/ui/common.tis#L263
+    // https://github.com/fufesou/rustdesk/blob/5e9a31340b899822090a3731769ae79c6bf5f3e5/src/ui/common.tis#L263
     if (!type.contains("custom") && desktopType != DesktopType.portForward) {
       closeConnection();
     }
@@ -1673,7 +1673,7 @@ Future<Offset?> _adjustRestoreMainWindowOffset(
 Future<bool> restoreWindowPosition(WindowType type,
     {int? windowId, String? peerId}) async {
   if (bind
-      .mainGetEnv(key: "DISABLE_OABRemoteDesk_RESTORE_WINDOW_POSITION")
+      .mainGetEnv(key: "DISABLE_RUSTDESK_RESTORE_WINDOW_POSITION")
       .isNotEmpty) {
     return false;
   }
@@ -1837,7 +1837,7 @@ bool handleUriLink({List<String>? cmdArgs, Uri? uri, String? uriString}) {
   List<String>? args;
   if (cmdArgs != null) {
     args = cmdArgs;
-    // OABRemoteDesk <uri link>
+    // rustdesk <uri link>
     if (args.isNotEmpty && args[0].startsWith(kUniLinksPrefix)) {
       final uri = Uri.tryParse(args[0]);
       if (uri != null) {
@@ -1908,7 +1908,7 @@ bool handleUriLink({List<String>? cmdArgs, Uri? uri, String? uriString}) {
     switch (type) {
       case UriLinkType.remoteDesktop:
         Future.delayed(Duration.zero, () {
-          OABRemoteDeskWinManager.newRemoteDesktop(id!,
+          rustDeskWinManager.newRemoteDesktop(id!,
               password: password,
               switchUuid: switchUuid,
               forceRelay: forceRelay);
@@ -1916,19 +1916,19 @@ bool handleUriLink({List<String>? cmdArgs, Uri? uri, String? uriString}) {
         break;
       case UriLinkType.fileTransfer:
         Future.delayed(Duration.zero, () {
-          OABRemoteDeskWinManager.newFileTransfer(id!,
+          rustDeskWinManager.newFileTransfer(id!,
               password: password, forceRelay: forceRelay);
         });
         break;
       case UriLinkType.portForward:
         Future.delayed(Duration.zero, () {
-          OABRemoteDeskWinManager.newPortForward(id!, false,
+          rustDeskWinManager.newPortForward(id!, false,
               password: password, forceRelay: forceRelay);
         });
         break;
       case UriLinkType.rdp:
         Future.delayed(Duration.zero, () {
-          OABRemoteDeskWinManager.newPortForward(id!, true,
+          rustDeskWinManager.newPortForward(id!, true,
               password: password, forceRelay: forceRelay);
         });
         break;
@@ -1957,7 +1957,7 @@ List<String>? urlLinkToCmdArgs(Uri uri) {
       id = uri.path.substring(1);
     }
   } else if (uri.authority.length > 2 && uri.path.length <= 1) {
-    // OABRemoteDesk://<connect-id>
+    // rustdesk://<connect-id>
     command = '--connect';
     id = uri.authority;
   }
@@ -1986,11 +1986,11 @@ connectMainDesktop(
   bool? forceRelay,
 }) async {
   if (isFileTransfer) {
-    await OABRemoteDeskWinManager.newFileTransfer(id, forceRelay: forceRelay);
+    await rustDeskWinManager.newFileTransfer(id, forceRelay: forceRelay);
   } else if (isTcpTunneling || isRDP) {
-    await OABRemoteDeskWinManager.newPortForward(id, isRDP, forceRelay: forceRelay);
+    await rustDeskWinManager.newPortForward(id, isRDP, forceRelay: forceRelay);
   } else {
-    await OABRemoteDeskWinManager.newRemoteDesktop(id, forceRelay: forceRelay);
+    await rustDeskWinManager.newRemoteDesktop(id, forceRelay: forceRelay);
   }
 }
 
@@ -2031,7 +2031,7 @@ connect(
         forceRelay: forceRelay,
       );
     } else {
-      await OABRemoteDeskWinManager.call(WindowType.Main, kWindowConnect, {
+      await rustDeskWinManager.call(WindowType.Main, kWindowConnect, {
         'id': id,
         'isFileTransfer': isFileTransfer,
         'isTcpTunneling': isTcpTunneling,
@@ -2121,22 +2121,22 @@ bool isRunningInPortableMode() {
 /// Window status callback
 Future<void> onActiveWindowChanged() async {
   print(
-      "[MultiWindowHandler] active window changed: ${OABRemoteDeskWinManager.getActiveWindows()}");
-  if (OABRemoteDeskWinManager.getActiveWindows().isEmpty) {
+      "[MultiWindowHandler] active window changed: ${rustDeskWinManager.getActiveWindows()}");
+  if (rustDeskWinManager.getActiveWindows().isEmpty) {
     // close all sub windows
     try {
       if (Platform.isLinux) {
         await Future.wait([
           saveWindowPosition(WindowType.Main),
-          OABRemoteDeskWinManager.closeAllSubWindows()
+          rustDeskWinManager.closeAllSubWindows()
         ]);
       } else {
-        await OABRemoteDeskWinManager.closeAllSubWindows();
+        await rustDeskWinManager.closeAllSubWindows();
       }
     } catch (err) {
       debugPrintStack(label: "$err");
     } finally {
-      debugPrint("Start closing OABRemoteDesk...");
+      debugPrint("Start closing RustDesk...");
       await windowManager.setPreventClose(false);
       await windowManager.close();
       if (Platform.isMacOS) {
@@ -2234,7 +2234,7 @@ class ServerConfig {
     this.key = key?.trim() ?? '';
   }
 
-  /// decode from shared string (from user shared or OABRemoteDesk-server generated)
+  /// decode from shared string (from user shared or rustdesk-server generated)
   /// also see [encode]
   /// throw when decoding failure
   ServerConfig.decode(String msg) {
@@ -2325,17 +2325,17 @@ int version_cmp(String v1, String v2) {
 String getWindowName({WindowType? overrideType}) {
   switch (overrideType ?? kWindowType) {
     case WindowType.Main:
-      return "OABRemoteDesk";
+      return "RustDesk";
     case WindowType.FileTransfer:
-      return "File Transfer - OABRemoteDesk";
+      return "File Transfer - RustDesk";
     case WindowType.PortForward:
-      return "Port Forward - OABRemoteDesk";
+      return "Port Forward - RustDesk";
     case WindowType.RemoteDesktop:
-      return "Remote Desktop - OABRemoteDesk";
+      return "Remote Desktop - RustDesk";
     default:
       break;
   }
-  return "OABRemoteDesk";
+  return "RustDesk";
 }
 
 String getWindowNameWithId(String id, {WindowType? overrideType}) {
@@ -2359,7 +2359,7 @@ Future<void> updateSystemWindowTheme() async {
 ///
 /// Note: not found a general solution for rust based AVFoundation bingding.
 /// [AVFoundation] crate has compile error.
-const kMacOSPermChannel = MethodChannel("org.OABRemoteDesk.OABRemoteDesk/macos");
+const kMacOSPermChannel = MethodChannel("org.rustdesk.rustdesk/macos");
 
 enum PermissionAuthorizeType {
   undetermined,

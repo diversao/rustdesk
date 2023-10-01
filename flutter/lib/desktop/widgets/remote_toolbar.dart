@@ -780,7 +780,7 @@ class ScreenAdjustor {
   }
 
   updateScreen() async {
-    final v = await OABRemoteDeskWinManager.call(
+    final v = await rustDeskWinManager.call(
         WindowType.Main, kWindowGetWindowInfo, '');
     final String valueStr = v.result;
     if (valueStr.isEmpty) {

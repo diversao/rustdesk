@@ -38,10 +38,10 @@ class MultiWindowCallResult {
 /// Window Manager
 /// mainly use it in `Main Window`
 /// use it in sub window is not recommended
-class OABRemoteDeskMultiWindowManager {
-  OABRemoteDeskMultiWindowManager._();
+class RustDeskMultiWindowManager {
+  RustDeskMultiWindowManager._();
 
-  static final instance = OABRemoteDeskMultiWindowManager._();
+  static final instance = RustDeskMultiWindowManager._();
 
   final Set<int> _inactiveWindows = {};
   final Set<int> _activeWindows = {};
@@ -343,7 +343,7 @@ class OABRemoteDeskMultiWindowManager {
   /// [Availability]
   /// This function should only be called from main window.
   /// For other windows, please post a unregister(hide) event to main window handler:
-  /// `OABRemoteDeskWinManager.call(WindowType.Main, kWindowEventHide, {"id": windowId!});`
+  /// `rustDeskWinManager.call(WindowType.Main, kWindowEventHide, {"id": windowId!});`
   Future<void> unregisterActiveWindow(int windowId) async {
     _activeWindows.remove(windowId);
     if (windowId != kMainWindowId) {
@@ -361,4 +361,4 @@ class OABRemoteDeskMultiWindowManager {
   }
 }
 
-final OABRemoteDeskWinManager = OABRemoteDeskMultiWindowManager.instance;
+final rustDeskWinManager = RustDeskMultiWindowManager.instance;

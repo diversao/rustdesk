@@ -16,7 +16,7 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="OABRemoteDesk"
+        android:label="RustDesk"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true">
@@ -37,7 +37,7 @@
             android:name=".InputService"
             android:enabled="true"
             android:exported="false"
-            android:label="OABRemoteDesk Input"
+            android:label="RustDesk Input"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />

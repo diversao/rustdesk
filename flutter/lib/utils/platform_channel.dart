@@ -6,7 +6,7 @@ import 'package:flutter_hbb/main.dart';
 
 enum SystemWindowTheme { light, dark }
 
-/// The platform channel for OABRemoteDesk.
+/// The platform channel for RustDesk.
 class RdPlatformChannel {
   RdPlatformChannel._();
 
@@ -15,7 +15,7 @@ class RdPlatformChannel {
   static RdPlatformChannel get instance => _windowUtil;
 
   final MethodChannel _osxMethodChannel =
-      MethodChannel("org.OABRemoteDesk.OABRemoteDesk/macos");
+      MethodChannel("org.rustdesk.rustdesk/macos");
 
   /// Change the theme of the system window
   Future<void> changeSystemWindowTheme(SystemWindowTheme theme) {

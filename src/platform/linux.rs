@@ -239,19 +239,19 @@ fn set_x11_env(desktop: &Desktop) {
 }
 
 #[inline]
-fn stop_OABRemoteDesk_servers() {
+fn stop_rustdesk_servers() {
     let _ = run_cmds(&format!(
-        r##"ps -ef | grep -E 'OABRemoteDesk +--server' | awk '{{printf("kill -9 %d\n", $2)}}' | bash"##,
+        r##"ps -ef | grep -E 'rustdesk +--server' | awk '{{printf("kill -9 %d\n", $2)}}' | bash"##,
     ));
 }
 
 #[inline]
 fn stop_subprocess() {
     let _ = run_cmds(&format!(
-        r##"ps -ef | grep '/etc/OABRemoteDesk/xorg.conf' | grep -v grep | awk '{{printf("kill -9 %d\n", $2)}}' | bash"##,
+        r##"ps -ef | grep '/etc/rustdesk/xorg.conf' | grep -v grep | awk '{{printf("kill -9 %d\n", $2)}}' | bash"##,
     ));
     let _ = run_cmds(&format!(
-        r##"ps -ef | grep -E 'OABRemoteDesk +--cm-no-ui' | grep -v grep | awk '{{printf("kill -9 %d\n", $2)}}' | bash"##,
+        r##"ps -ef | grep -E 'rustdesk +--cm-no-ui' | grep -v grep | awk '{{printf("kill -9 %d\n", $2)}}' | bash"##,
     ));
 }
 
@@ -317,15 +317,15 @@ fn should_start_server(
 }
 
 // to-do: stop_server(&mut user_server); may not stop child correctly
-// stop_OABRemoteDesk_servers() is just a temp solution here.
+// stop_rustdesk_servers() is just a temp solution here.
 fn force_stop_server() {
-    stop_OABRemoteDesk_servers();
+    stop_rustdesk_servers();
     sleep_millis(super::SERVICE_INTERVAL);
 }
 
 pub fn start_os_service() {
     check_if_stop_service();
-    stop_OABRemoteDesk_servers();
+    stop_rustdesk_servers();
     stop_subprocess();
     start_uinput_service();
 
@@ -398,7 +398,7 @@ pub fn start_os_service() {
         let keeps_headless = sid.is_empty() && desktop.is_headless();
         let keeps_session = sid == desktop.sid;
         if keeps_headless || keeps_session {
-            // for fixing https://github.com/OABRemoteDesk/OABRemoteDesk/issues/3129 to avoid too much dbus calling,
+            // for fixing https://github.com/rustdesk/rustdesk/issues/3129 to avoid too much dbus calling,
             sleep_millis(500);
         } else {
             sleep_millis(super::SERVICE_INTERVAL);
@@ -684,16 +684,16 @@ pub fn exec_privileged(args: &[&str]) -> ResultType<Child> {
 }
 
 pub fn check_super_user_permission() -> ResultType<bool> {
-    let file = "/usr/share/OABRemoteDesk/files/polkit";
+    let file = "/usr/share/rustdesk/files/polkit";
     let arg;
     if Path::new(file).is_file() {
         arg = file;
     } else {
         arg = "echo";
     }
-    // https://github.com/OABRemoteDesk/OABRemoteDesk/issues/2756
+    // https://github.com/rustdesk/rustdesk/issues/2756
     if let Ok(status) = Command::new("pkexec").arg(arg).status() {
-        // https://github.com/OABRemoteDesk/OABRemoteDesk/issues/5205#issuecomment-1658059657s
+        // https://github.com/rustdesk/rustdesk/issues/5205#issuecomment-1658059657s
         Ok(status.code() != Some(126) && status.code() != Some(127))
     } else {
         Ok(true)
@@ -899,7 +899,7 @@ mod desktop {
         pub protocal: String,
         pub display: String,
         pub xauth: String,
-        pub is_OABRemoteDesk_subprocess: bool,
+        pub is_rustdesk_subprocess: bool,
     }
 
     impl Desktop {
@@ -915,7 +915,7 @@ mod desktop {
 
         #[inline]
         pub fn is_headless(&self) -> bool {
-            self.sid.is_empty() || self.is_OABRemoteDesk_subprocess
+            self.sid.is_empty() || self.is_rustdesk_subprocess
         }
 
         fn get_display(&mut self) {
@@ -1063,11 +1063,11 @@ mod desktop {
         }
 
         fn set_is_subprocess(&mut self) {
-            self.is_OABRemoteDesk_subprocess = false;
-            let cmd = "ps -ef | grep 'OABRemoteDesk/xorg.conf' | grep -v grep | wc -l";
+            self.is_rustdesk_subprocess = false;
+            let cmd = "ps -ef | grep 'rustdesk/xorg.conf' | grep -v grep | wc -l";
             if let Ok(res) = run_cmds(cmd) {
                 if res.trim() != "0" {
-                    self.is_OABRemoteDesk_subprocess = true;
+                    self.is_rustdesk_subprocess = true;
                 }
             }
         }
@@ -1080,7 +1080,7 @@ mod desktop {
             let seat0_values = get_values_of_seat0(&[0, 1, 2]);
             if seat0_values[0].is_empty() {
                 *self = Self::default();
-                self.is_OABRemoteDesk_subprocess = false;
+                self.is_rustdesk_subprocess = false;
                 return;
             }
 
@@ -1091,7 +1091,7 @@ mod desktop {
             if self.is_wayland() {
                 self.display = "".to_owned();
                 self.xauth = "".to_owned();
-                self.is_OABRemoteDesk_subprocess = false;
+                self.is_rustdesk_subprocess = false;
                 return;
             }
 
@@ -1158,7 +1158,7 @@ fn switch_service(stop: bool) -> String {
     let home = std::env::var("HOME").unwrap_or_default();
     Config::set_option("stop-service".into(), if stop { "Y" } else { "" }.into());
     if home != "/root" && !Config::get().is_empty() {
-        format!("cp -f {home}/.config/OABRemoteDesk/OABRemoteDesk.toml /root/.config/OABRemoteDesk/; cp -f {home}/.config/OABRemoteDesk/OABRemoteDesk2.toml /root/.config/OABRemoteDesk/;")
+        format!("cp -f {home}/.config/rustdesk/RustDesk.toml /root/.config/rustdesk/; cp -f {home}/.config/rustdesk/RustDesk2.toml /root/.config/rustdesk/;")
     } else {
         "".to_owned()
     }
@@ -1171,7 +1171,7 @@ pub fn uninstall_service(show_new_window: bool) -> bool {
     log::info!("Uninstalling service...");
     let cp = switch_service(true);
     if !run_cmds_pkexec(&format!(
-        "systemctl disable OABRemoteDesk; systemctl stop OABRemoteDesk; {cp}"
+        "systemctl disable rustdesk; systemctl stop rustdesk; {cp}"
     )) {
         Config::set_option("stop-service".into(), "".into());
         return true;
@@ -1190,7 +1190,7 @@ pub fn install_service() -> bool {
     log::info!("Installing service...");
     let cp = switch_service(false);
     if !run_cmds_pkexec(&format!(
-        "{cp} systemctl enable OABRemoteDesk; systemctl start OABRemoteDesk;"
+        "{cp} systemctl enable rustdesk; systemctl start rustdesk;"
     )) {
         Config::set_option("stop-service".into(), "Y".into());
         return true;
@@ -1202,7 +1202,7 @@ pub fn install_service() -> bool {
 fn check_if_stop_service() {
     if Config::get_option("stop-service".into()) == "Y" {
         allow_err!(run_cmds(
-            "systemctl disable OABRemoteDesk; systemctl stop OABRemoteDesk"
+            "systemctl disable rustdesk; systemctl stop rustdesk"
         ));
     }
 }
@@ -1210,7 +1210,7 @@ fn check_if_stop_service() {
 pub fn check_autostart_config() -> ResultType<()> {
     let home = std::env::var("HOME").unwrap_or_default();
     let path = format!("{home}/.config/autostart");
-    let file = format!("{path}/OABRemoteDesk.desktop");
+    let file = format!("{path}/rustdesk.desktop");
     std::fs::create_dir_all(&path).ok();
     if !Path::new(&file).exists() {
         // write text to the desktop file
@@ -1219,7 +1219,7 @@ pub fn check_autostart_config() -> ResultType<()> {
             "
 [Desktop Entry]
 Type=Application
-Exec=OABRemoteDesk --tray
+Exec=rustdesk --tray
 NoDisplay=false
         "
             .as_bytes(),

@@ -303,7 +303,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: bd6b5b41254e57c5bcece202ebfb234de63e6487
-      url: "https://github.com/OABRemoteDesk-org/Dash-Chat-2"
+      url: "https://github.com/rustdesk-org/Dash-Chat-2"
     source: git
     version: "0.0.18"
   debounce_throttle:
@@ -320,7 +320,7 @@ packages:
       path: "packages/desktop_drop"
       ref: HEAD
       resolved-ref: "21725af7fd5be4e928acfb84146ebd10d1364a97"
-      url: "https://github.com/OABRemoteDesk-org/flutter-plugins"
+      url: "https://github.com/rustdesk-org/flutter-plugins"
     source: git
     version: "0.4.1"
   desktop_multi_window:
@@ -329,7 +329,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: ef03db52a20a7899da135d694c071fa3866c8fb1
-      url: "https://github.com/OABRemoteDesk-org/OABRemoteDesk_desktop_multi_window"
+      url: "https://github.com/rustdesk-org/rustdesk_desktop_multi_window"
     source: git
     version: "0.1.0"
   device_info_plus:
@@ -520,7 +520,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: "62f09545149f320616467c306c8c5f71714a18e6"
-      url: "https://github.com/OABRemoteDesk-org/flutter_improved_scrolling"
+      url: "https://github.com/rustdesk-org/flutter_improved_scrolling"
     source: git
     version: "0.0.3"
   flutter_keyboard_visibility:
@@ -1272,7 +1272,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: e1d25263ae7c214ff52a66a9cf28aea8f408742e
-      url: "https://github.com/OABRemoteDesk-org/uni_links_desktop"
+      url: "https://github.com/rustdesk-org/uni_links_desktop"
     source: git
     version: "0.1.6"
   uni_links_platform_interface:
@@ -1529,7 +1529,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: f19acdb008645366339444a359a45c3257c8b32e
-      url: "https://github.com/OABRemoteDesk-org/window_manager"
+      url: "https://github.com/rustdesk-org/window_manager"
     source: git
     version: "0.3.6"
   window_size:

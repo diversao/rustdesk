@@ -36,7 +36,7 @@ fn record(i: usize) {
             CapturerMag::new(display.origin(), display.width(), display.height(), false)
                 .expect("Couldn't begin capture.");
         let wnd_cls = "";
-        let wnd_name = "OABRemoteDeskPrivacyWindow";
+        let wnd_name = "RustDeskPrivacyWindow";
         if false == capture_mag.exclude(wnd_cls, wnd_name).unwrap() {
             println!("No window found for cls {} name {}", wnd_cls, wnd_name);
         } else {
@@ -72,7 +72,7 @@ fn record(i: usize) {
             CapturerMag::new(display.origin(), display.width(), display.height(), true)
                 .expect("Couldn't begin capture.");
         let wnd_cls = "";
-        let wnd_title = "OABRemoteDeskPrivacyWindow";
+        let wnd_title = "RustDeskPrivacyWindow";
         if false == capture_mag.exclude(wnd_cls, wnd_title).unwrap() {
             println!("No window found for cls {} title {}", wnd_cls, wnd_title);
         } else {

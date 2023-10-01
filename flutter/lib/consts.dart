@@ -48,7 +48,7 @@ const String kOptionOpenInTabs = "allow-open-in-tabs";
 const String kOptionOpenInWindows = "allow-open-in-windows";
 const String kOptionForceAlwaysRelay = "force-always-relay";
 
-const String kUniLinksPrefix = "OABRemoteDesk://";
+const String kUniLinksPrefix = "rustdesk://";
 const String kUrlActionClose = "close";
 
 const String kTabLabelHomePage = "Home";
@@ -61,7 +61,7 @@ const String kPointerEventKindTouch = "touch";
 const String kPointerEventKindMouse = "mouse";
 
 // the executable name of the portable version
-const String kEnvPortableExecutable = "OABRemoteDesk_APPNAME";
+const String kEnvPortableExecutable = "RUSTDESK_APPNAME";
 
 const Color kColorWarn = Color.fromARGB(255, 245, 133, 59);
 

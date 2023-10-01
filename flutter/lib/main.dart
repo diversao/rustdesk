@@ -142,7 +142,7 @@ void runMainApp(bool startService) async {
       windowManager.show();
       windowManager.focus();
       // Move registration of active main window here to prevent from async visible check.
-      OABRemoteDeskWinManager.registerActiveWindow(kWindowMainId);
+      rustDeskWinManager.registerActiveWindow(kWindowMainId);
     }
     windowManager.setOpacity(1);
     windowManager.setTitle(getWindowName());
@@ -397,7 +397,7 @@ class _AppState extends State<App> {
         child: GetMaterialApp(
           navigatorKey: globalKey,
           debugShowCheckedModeBanner: false,
-          title: 'OABRemoteDesk',
+          title: 'RustDesk',
           theme: MyTheme.lightTheme,
           darkTheme: MyTheme.darkTheme,
           themeMode: MyTheme.currentThemeMode(),

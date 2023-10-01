@@ -1,23 +1,23 @@
 <p align="center">
-  <img src="../res/logo-header.svg" alt="OABRemoteDesk - Your remote desktop"><br>
+  <img src="../res/logo-header.svg" alt="RustDesk - Your remote desktop"><br>
   <a href="#free-public-servers">Servers</a> •
   <a href="#raw-steps-to-build">Build</a> •
   <a href="#how-to-build-with-docker">Docker</a> •
   <a href="#file-structure">Structure</a> •
   <a href="#snapshot">Snapshot</a><br>
   [<a href="../README.md">English</a>] | [<a href="README-UA.md">Українська</a>] | [<a href="README-CS.md">česky</a>] | [<a href="README-ZH.md">中文</a>] | [<a href="README-HU.md">Magyar</a>] | [<a href="README-ES.md">Español</a>] | [<a href="README-FA.md">فارسی</a>] | [<a href="README-FR.md">Français</a>] | [<a href="README-DE.md">Deutsch</a>] | [<a href="README-PL.md">Polski</a>] | [<a href="README-FI.md">Suomi</a>] | [<a href="README-ML.md">മലയാളം</a>] | [<a href="README-JP.md">日本語</a>] | [<a href="README-NL.md">Nederlands</a>] | [<a href="README-IT.md">Italiano</a>] | [<a href="README-RU.md">Русский</a>] | [<a href="README-PTBR.md">Português (Brasil)</a>] | [<a href="README-EO.md">Esperanto</a>] | [<a href="README-KR.md">한국어</a>] | [<a href="README-AR.md">العربي</a>] | [<a href="README-VN.md">Tiếng Việt</a>] | [<a href="README-GR.md">Ελληνικά</a>]<br>
-  <b>Kami membutuhkan bantuanmu untuk menterjemahkan file README dan <a href="https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/src/lang">OABRemoteDesk UI</a> ke Bahasa Indonesia</b>
+  <b>Kami membutuhkan bantuanmu untuk menterjemahkan file README dan <a href="https://github.com/rustdesk/rustdesk/tree/master/src/lang">RustDesk UI</a> ke Bahasa Indonesia</b>
 </p>
 
-Mari mengobrol bersama kami: [Discord](https://discord.gg/nDceKgxnkV) | [Twitter](https://twitter.com/OABRemoteDesk) | [Reddit](https://www.reddit.com/r/OABRemoteDesk)
+Mari mengobrol bersama kami: [Discord](https://discord.gg/nDceKgxnkV) | [Twitter](https://twitter.com/rustdesk) | [Reddit](https://www.reddit.com/r/rustdesk)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I04VU09)
 
-Merupakan perangkat lunak Remote Desktop yang baru, dan dibangun dengan Rust. Bahkan kamu bisa langsung menggunakannya tanpa perlu melakukan konfigurasi tambahan. Serta memiliki kontrol penuh terhadap semua data, tanpa perlu merasa was-was tentang isu keamanan, dan yang lebih menarik adalah memiliki opsi untuk menggunakan server rendezvous/relay milik kami, [konfigurasi server sendiri](https://OABRemoteDesk.com/server), atau [tulis rendezvous/relay server anda sendiri](https://github.com/OABRemoteDesk/OABRemoteDesk-server-demo).
+Merupakan perangkat lunak Remote Desktop yang baru, dan dibangun dengan Rust. Bahkan kamu bisa langsung menggunakannya tanpa perlu melakukan konfigurasi tambahan. Serta memiliki kontrol penuh terhadap semua data, tanpa perlu merasa was-was tentang isu keamanan, dan yang lebih menarik adalah memiliki opsi untuk menggunakan server rendezvous/relay milik kami, [konfigurasi server sendiri](https://rustdesk.com/server), atau [tulis rendezvous/relay server anda sendiri](https://github.com/rustdesk/rustdesk-server-demo).
 
-OABRemoteDesk mengajak semua orang untuk ikut berkontribusi. Lihat [`docs/CONTRIBUTING-ID.md`](CONTRIBUTING-ID.md) untuk melihat panduan.
+RustDesk mengajak semua orang untuk ikut berkontribusi. Lihat [`docs/CONTRIBUTING-ID.md`](CONTRIBUTING-ID.md) untuk melihat panduan.
 
-[**UNDUH BINARY**](https://github.com/OABRemoteDesk/OABRemoteDesk/releases)
+[**UNDUH BINARY**](https://github.com/rustdesk/rustdesk/releases)
 
 ## Server Publik Gratis
 
@@ -29,7 +29,7 @@ Di bawah ini merupakan server gratis yang bisa kamu gunakan, seiring dengan wakt
 
 ## Dev Container
 
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Container&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/OABRemoteDesk/OABRemoteDesk)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Container&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/rustdesk/rustdesk)
 
 Apabila PC kamu sudah terinstal VS Code dan Docker, kamu bisa mengklik badge yang ada diatas untuk memulainya. Dengan mengklik badge tersebut secara otomatis akan menginstal ekstensi pada VS Code, lakukan kloning (clone) source code kedalam container volume, dan aktifkan dev container untuk menggunakannya.
 
@@ -54,7 +54,7 @@ Kamu bisa mengunduh Sciter dynamic library disini.
 
 - jalankan `cargo run`
 
-## [Build](https://OABRemoteDesk.com/docs/en/dev/build/)
+## [Build](https://rustdesk.com/docs/en/dev/build/)
 
 ## Cara Build di Linux
 
@@ -108,8 +108,8 @@ cd
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
-git clone https://github.com/OABRemoteDesk/OABRemoteDesk
-cd OABRemoteDesk
+git clone https://github.com/rustdesk/rustdesk
+cd rustdesk
 mkdir -p target/debug
 wget https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so
 mv libsciter-gtk.so target/debug
@@ -118,21 +118,21 @@ VCPKG_ROOT=$HOME/vcpkg cargo run
 
 ### Mengubah Wayland ke X11 (Xorg)
 
-OABRemoteDesk tidak mendukung Wayland. Cek [ini](https://docs.fedoraproject.org/en-US/quick-docs/configuring-xorg-as-default-gnome-session/) untuk mengonfigurasi Xorg sebagai sesi standar di GNOME.
+RustDesk tidak mendukung Wayland. Cek [ini](https://docs.fedoraproject.org/en-US/quick-docs/configuring-xorg-as-default-gnome-session/) untuk mengonfigurasi Xorg sebagai sesi standar di GNOME.
 
 ## Kompatibilitas dengan Wayland
 
-Sepertinya Wayland tidak memiliki API untuk mengirimkan ketukan tombol ke jendela lain. Maka dari itu, OABRemoteDesk menggunakan API dari level yang lebih rendah, lebih tepatnya perangkat `/dev/uinput` (linux kernel level)
+Sepertinya Wayland tidak memiliki API untuk mengirimkan ketukan tombol ke jendela lain. Maka dari itu, RustDesk menggunakan API dari level yang lebih rendah, lebih tepatnya perangkat `/dev/uinput` (linux kernel level)
 
 Saat Wayland menjadi sisi yang dikendalikan atau sisi yang sedang diremote, kamu harus memulai dengan cara ini
 
 ```bash
 # Start uinput service
-$ sudo OABRemoteDesk --service
-$ OABRemoteDesk
+$ sudo rustdesk --service
+$ rustdesk
 ```
 
-**Harap Diperhatikan**: Saat Perekaman layar menggunakan Wayland antarmuka (UI) yang ditampilkan akan berbeda. Untuk saat ini OABRemoteDesk hanya mendukung org.freedesktop.portal.ScreenCast.
+**Harap Diperhatikan**: Saat Perekaman layar menggunakan Wayland antarmuka (UI) yang ditampilkan akan berbeda. Untuk saat ini RustDesk hanya mendukung org.freedesktop.portal.ScreenCast.
 
 ```bash
 $ dbus-send --session --print-reply       \
@@ -152,41 +152,41 @@ method return time=1662544486.931020 sender=:1.54 -> destination=:1.139 serial=2
 Mulailah dengan melakukan kloning (clone) repositori dan build dengan docker container:
 
 ```sh
-git clone https://github.com/OABRemoteDesk/OABRemoteDesk
-cd OABRemoteDesk
-docker build -t "OABRemoteDesk-builder" .
+git clone https://github.com/rustdesk/rustdesk
+cd rustdesk
+docker build -t "rustdesk-builder" .
 ```
 
 Selanjutnya, setiap kali ketika kamu akan melakukan build aplikasi, jalankan perintah berikut:
 
 ```sh
-docker run --rm -it -v $PWD:/home/user/OABRemoteDesk -v OABRemoteDesk-git-cache:/home/user/.cargo/git -v OABRemoteDesk-registry-cache:/home/user/.cargo/registry -e PUID="$(id -u)" -e PGID="$(id -g)" OABRemoteDesk-builder
+docker run --rm -it -v $PWD:/home/user/rustdesk -v rustdesk-git-cache:/home/user/.cargo/git -v rustdesk-registry-cache:/home/user/.cargo/registry -e PUID="$(id -u)" -e PGID="$(id -g)" rustdesk-builder
 ```
 
 Perlu diingat bahwa pada saat build pertama kali, mungkin memerlukan waktu lebih lama sebelum dependensi di-cache, build berikutnya akan lebih cepat. Selain itu, jika perlu menentukan argumen yang berbeda untuk perintah build, kamu dapat melakukannya di akhir perintah di posisi `<OPTIONAL-ARGS>`. Misalnya, jika ingin membangun versi rilis yang dioptimalkan, jalankan perintah di atas dan tambahkan `--release`. Hasil eksekusi perintah tersebut akan tersimpan pada target folder di sistem kamu, dan dapat dijalankan dengan:
 
 ```sh
-target/debug/OABRemoteDesk
+target/debug/rustdesk
 ```
 
 Atau, jika kamu menjalankan rilis yang dapat dieksekusi:
 
 ```sh
-target/release/OABRemoteDesk
+target/release/rustdesk
 ```
 
-Harap pastikan bahwa kamu menjalankan perintah ini dari repositori root OABRemoteDesk, jika tidak demikian, aplikasi mungkin tidak dapat menemukan sumber yang diperlukan. Dan juga, perintah cargo seperti `install` atau `run` saat ini tidak didukung melalui metode ini karena, proses menginstal atau menjalankan program terjadi di dalam container bukan pada host.
+Harap pastikan bahwa kamu menjalankan perintah ini dari repositori root RustDesk, jika tidak demikian, aplikasi mungkin tidak dapat menemukan sumber yang diperlukan. Dan juga, perintah cargo seperti `install` atau `run` saat ini tidak didukung melalui metode ini karena, proses menginstal atau menjalankan program terjadi di dalam container bukan pada host.
 
 ## Struktur File
 
-- **[libs/hbb_common](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/libs/hbb_common)**: video codec, config, tcp/udp wrapper, protobuf, fs functions untuk transfer file, dan beberapa fungsi utilitas lainnya
-- **[libs/scrap](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/libs/scrap)**: screen capture
-- **[libs/enigo](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/libs/enigo)**: spesifikasi platform keyboard/mouse control
-- **[src/ui](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/src/ui)**: GUI
-- **[src/server](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/src/server)**: audio/clipboard/input/video services, dan network connections
-- **[src/client.rs](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/src/client.rs)**: start a peer connection
-- **[src/rendezvous_mediator.rs](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/src/rendezvous_mediator.rs)**: Komunikasi dengan [OABRemoteDesk-server](https://github.com/OABRemoteDesk/OABRemoteDesk-server), menunggu untuk remote direct (TCP hole punching) atau relayed connection
-- **[src/platform](https://github.com/OABRemoteDesk/OABRemoteDesk/tree/master/src/platform)**: kode khusus platform
+- **[libs/hbb_common](https://github.com/rustdesk/rustdesk/tree/master/libs/hbb_common)**: video codec, config, tcp/udp wrapper, protobuf, fs functions untuk transfer file, dan beberapa fungsi utilitas lainnya
+- **[libs/scrap](https://github.com/rustdesk/rustdesk/tree/master/libs/scrap)**: screen capture
+- **[libs/enigo](https://github.com/rustdesk/rustdesk/tree/master/libs/enigo)**: spesifikasi platform keyboard/mouse control
+- **[src/ui](https://github.com/rustdesk/rustdesk/tree/master/src/ui)**: GUI
+- **[src/server](https://github.com/rustdesk/rustdesk/tree/master/src/server)**: audio/clipboard/input/video services, dan network connections
+- **[src/client.rs](https://github.com/rustdesk/rustdesk/tree/master/src/client.rs)**: start a peer connection
+- **[src/rendezvous_mediator.rs](https://github.com/rustdesk/rustdesk/tree/master/src/rendezvous_mediator.rs)**: Komunikasi dengan [rustdesk-server](https://github.com/rustdesk/rustdesk-server), menunggu untuk remote direct (TCP hole punching) atau relayed connection
+- **[src/platform](https://github.com/rustdesk/rustdesk/tree/master/src/platform)**: kode khusus platform
 
 ## Snapshots
 

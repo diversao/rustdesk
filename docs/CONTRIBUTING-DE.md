@@ -1,11 +1,11 @@
-# Beitr�ge zOABRemoteDesksk
+# Beitr�ge zu RustDesk
 
-OABRemoteDesk begr��t Beitr�ge von jedem. Hier sind die Richtlinien, wenn Sie uns
+RustDesk begr��t Beitr�ge von jedem. Hier sind die Richtlinien, wenn Sie uns
 helfen m�chten:
 
 ## Beitr�ge
 
-Beitr�ge zOABRemoteDesksk oder seinen Abh�ngigkeiten sollten in Form von Pull
+Beitr�ge zu RustDesk oder seinen Abh�ngigkeiten sollten in Form von Pull
 Requests auf GitHub erfolgen. Jeder Pull Request wird von einem Hauptakteur
 (jemand mit der Erlaubnis, Korrekturen einzubringen) gepr�ft und entweder in den
 Hauptbaum eingef�gt oder Feedback f�r notwendige �nderungen gegeben. Alle
@@ -34,7 +34,7 @@ werden, dass Beitr�ge zum gleichen Thema doppelt bearbeitet werden.
 - Wenn Ihr Patch nicht begutachtet wird oder Sie eine bestimmte Person zur
   Begutachtung ben�tigen, k�nnen Sie einem Gutachter mit @ antworten und um eine
   Begutachtung des Pull Requests oder einen Kommentar bitten. Sie k�nnen auch
-  per [E-Mail](mailto:info@OABRemoteDesk.com) um eine Begutachtung bitten.
+  per [E-Mail](mailto:info@rustdesk.com) um eine Begutachtung bitten.
 
 - F�gen Sie Tests hinzu, die sich auf den behobenen Fehler oder die neue
   Funktion beziehen.
@@ -43,8 +43,8 @@ Spezifische Git-Anweisungen finden Sie im [GitHub-Workflow](https://github.com/s
 
 ## Verhalten
 
-https://github.com/OABRemoteDesk/OABRemoteDesk/blob/master/docs/CODE_OF_CONDUCT.md
+https://github.com/rustdesk/rustdesk/blob/master/docs/CODE_OF_CONDUCT.md
 
 ## Kommunikation
 
-OABRemoteDesk-Mitarbeiter arbeiten h�ufig im [Discord](https://discord.gg/nDceKgxnkV).
+RustDesk-Mitarbeiter arbeiten h�ufig im [Discord](https://discord.gg/nDceKgxnkV).

@@ -1,12 +1,12 @@
 [Unit]
-Description=OABRemoteDesk
+Description=RustDesk
 Requires=network.target
 After=systemd-user-sessions.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/OABRemoteDesk --service
-PIDFile=/run/OABRemoteDesk.pid
+ExecStart=/usr/bin/rustdesk --service
+PIDFile=/run/rustdesk.pid
 KillMode=mixed
 TimeoutStopSec=30
 User=root
