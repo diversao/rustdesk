@@ -95,7 +95,7 @@ mod test {
 
     #[test]
     fn test_filename_license_string() {
-        assert!(get_license_from_string("rustdesk.exe").is_err());
+        assert!(get_license_from_string("OABRemoteDesk").is_err());
         assert!(get_license_from_string("rustdesk").is_err());
         assert_eq!(
             get_license_from_string("rustdesk-host=server.example.net.exe").unwrap(),
