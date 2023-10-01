@@ -189,8 +189,8 @@ mod windows {
     };
 
     // This string is defined here.
-    //  https://github.com/fufesou/RustDeskIddDriver/blob/b370aad3f50028b039aad211df60c8051c4a64d6/RustDeskIddDriver/RustDeskIddDriver.inf#LL73C1-L73C40
-    const IDD_DEVICE_STRING: &'static str = "RustDeskIddDriver Device\0";
+    //  https://github.com/fufesou/OABRemoteDeskIddDriver/blob/b370aad3f50028b039aad211df60c8051c4a64d6/OABRemoteDeskIddDriver/OABRemoteDeskIddDriver.inf#LL73C1-L73C40
+    const IDD_DEVICE_STRING: &'static str = "OABRemoteDeskIddDriver Device\0";
 
     #[inline]
     pub(super) fn is_device_name(device_name: &str, name: &str) -> bool {

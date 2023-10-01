@@ -392,7 +392,7 @@ class DesktopTab extends StatelessWidget {
                         Offstage(
                             offstage: !showTitle,
                             child: const Text(
-                              "RustDesk",
+                              "OABRemoteDesk",
                               style: TextStyle(fontSize: 13),
                             ).marginOnly(left: 2))
                       ]).marginOnly(
@@ -568,7 +568,7 @@ class WindowActionPanelState extends State<WindowActionPanel>
     notMainWindowClose(WindowController controller) async {
       await controller.hide();
       await Future.wait([
-        rustDeskWinManager
+        OABRemoteDeskWinManager
             .call(WindowType.Main, kWindowEventHide, {"id": kWindowId!}),
         widget.onClose?.call() ?? Future.microtask(() => null)
       ]);
@@ -593,8 +593,8 @@ class WindowActionPanelState extends State<WindowActionPanel>
 
     // hide window on close
     if (widget.isMainWindow) {
-      if (rustDeskWinManager.getActiveWindows().contains(kMainWindowId)) {
-        await rustDeskWinManager.unregisterActiveWindow(kMainWindowId);
+      if (OABRemoteDeskWinManager.getActiveWindows().contains(kMainWindowId)) {
+        await OABRemoteDeskWinManager.unregisterActiveWindow(kMainWindowId);
       }
       // macOS specific workaround, the window is not hiding when in fullscreen.
       if (Platform.isMacOS && await windowManager.isFullScreen()) {
@@ -1140,7 +1140,7 @@ class AddButton extends StatelessWidget {
     return ActionIcon(
         message: 'New Connection',
         icon: IconFont.add,
-        onTap: () => rustDeskWinManager.call(
+        onTap: () => OABRemoteDeskWinManager.call(
             WindowType.Main, kWindowMainWindowOnTop, ""),
         isClose: false);
   }

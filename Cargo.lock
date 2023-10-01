@@ -3299,7 +3299,7 @@ dependencies = [
 [[package]]
 name = "keepawake"
 version = "0.4.3"
-source = "git+https://github.com/rustdesk-org/keepawake-rs#ac395ef826b32a077bc5d2fe108cf71fde8fe2e6"
+source = "git+https://github.com/OABRemoteDesk-org/keepawake-rs#ac395ef826b32a077bc5d2fe108cf71fde8fe2e6"
 dependencies = [
  "anyhow",
  "apple-sys",
@@ -3608,7 +3608,7 @@ dependencies = [
 [[package]]
 name = "magnum-opus"
 version = "0.4.0"
-source = "git+https://github.com/rustdesk/magnum-opus#5cd2bf989c148662fa3a2d9d539a71d71fd1d256"
+source = "git+https://github.com/OABRemoteDesk/magnum-opus#5cd2bf989c148662fa3a2d9d539a71d71fd1d256"
 dependencies = [
  "bindgen 0.59.2",
  "pkg-config",
@@ -4979,7 +4979,7 @@ dependencies = [
 [[package]]
 name = "reqwest"
 version = "0.11.18"
-source = "git+https://github.com/rustdesk-org/reqwest#4cc834539d9c44f7b6bbc5d2f8805842dc5aa328"
+source = "git+https://github.com/OABRemoteDesk-org/reqwest#4cc834539d9c44f7b6bbc5d2f8805842dc5aa328"
 dependencies = [
  "base64",
  "bytes",
@@ -5132,7 +5132,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rustdesk"
+name = "OABRemoteDesk"
 version = "1.2.3"
 dependencies = [
  "android_logger",
@@ -5224,7 +5224,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rustdesk-portable-packer"
+name = "OABRemoteDesk-portable-packer"
 version = "0.1.0"
 dependencies = [
  "brotli",
@@ -5904,7 +5904,7 @@ dependencies = [
 [[package]]
 name = "tao"
 version = "0.22.2"
-source = "git+https://github.com/rustdesk-org/tao?branch=dev#1e5b97258cf42a30f80f85a6aa0b1a4aece1977e"
+source = "git+https://github.com/OABRemoteDesk-org/tao?branch=dev#1e5b97258cf42a30f80f85a6aa0b1a4aece1977e"
 dependencies = [
  "bitflags",
  "cairo-rs",
@@ -5951,7 +5951,7 @@ dependencies = [
 [[package]]
 name = "tao-macros"
 version = "0.1.2"
-source = "git+https://github.com/rustdesk-org/tao?branch=dev#1e5b97258cf42a30f80f85a6aa0b1a4aece1977e"
+source = "git+https://github.com/OABRemoteDesk-org/tao?branch=dev#1e5b97258cf42a30f80f85a6aa0b1a4aece1977e"
 dependencies = [
  "proc-macro2 1.0.63",
  "quote 1.0.27",
@@ -6352,7 +6352,7 @@ dependencies = [
 [[package]]
 name = "tray-icon"
 version = "0.5.1"
-source = "git+https://github.com/rustdesk-org/tray-icon#ef98e7b98abed2e3da614277eced12a85bfb717c"
+source = "git+https://github.com/OABRemoteDesk-org/tray-icon#ef98e7b98abed2e3da614277eced12a85bfb717c"
 dependencies = [
  "cocoa",
  "core-graphics",

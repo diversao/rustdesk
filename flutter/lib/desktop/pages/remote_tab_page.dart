@@ -97,7 +97,7 @@ class _ConnectionTabPageState extends State<ConnectionTabPage> {
 
     tabController.onRemoved = (_, id) => onRemoveId(id);
 
-    rustDeskWinManager.setMethodHandler((call, fromWindowId) async {
+    OABRemoteDeskWinManager.setMethodHandler((call, fromWindowId) async {
       print(
           "[Remote Page] call ${call.method} with args ${call.arguments} from window $fromWindowId");
 

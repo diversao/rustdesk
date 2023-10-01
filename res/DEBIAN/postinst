@@ -7,17 +7,17 @@ if [ "$1" = configure ]; then
 	INITSYS=$(ls -al /proc/1/exe | awk -F' ' '{print $NF}' | awk -F'/' '{print $NF}')
 	
 	if [ "systemd" == "$INITSYS" ]; then
-		ln -s /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
+		ln -s /usr/lib/OABRemoteDesk/OABRemoteDesk /usr/bin/OABRemoteDesk
 
-		if [ -e /etc/systemd/system/rustdesk.service ]; then
-			rm /etc/systemd/system/rustdesk.service /usr/lib/systemd/system/rustdesk.service /usr/lib/systemd/user/rustdesk.service >/dev/null  2>&1
+		if [ -e /etc/systemd/system/OABRemoteDesk.service ]; then
+			rm /etc/systemd/system/OABRemoteDesk.service /usr/lib/systemd/system/OABRemoteDesk.service /usr/lib/systemd/user/OABRemoteDesk.service >/dev/null  2>&1
 		fi
 		version=$(python3 -V 2>&1 | grep -Po '(?<=Python )(.+)')
 		parsedVersion=$(echo "${version//./}")
         mkdir -p /usr/lib/systemd/system/
-		cp /usr/share/rustdesk/files/systemd/rustdesk.service /usr/lib/systemd/system/rustdesk.service
+		cp /usr/share/OABRemoteDesk/files/systemd/OABRemoteDesk.service /usr/lib/systemd/system/OABRemoteDesk.service
 		systemctl daemon-reload
-		systemctl enable rustdesk
-		systemctl start rustdesk
+		systemctl enable OABRemoteDesk
+		systemctl start OABRemoteDesk
 	fi
 fi
