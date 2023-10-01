@@ -18,7 +18,7 @@ path = "src/naming.rs"
 [features]
 inline = []
 cli = []
-flutter_texture_render = []
+flutter_texture_render = [] 
 appimage = []
 flatpak = []
 use_samplerate = ["samplerate"]
